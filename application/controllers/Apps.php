@@ -78,7 +78,7 @@ class Apps extends CI_Controller {
 
 		if(isset($_POST['edit']))
 		{
-			$data = array(
+			$record = array(
 							"nama_gol" => $this->input->post('nama'),
 							"tarif" => $this->input->post('tarif')
 						 );
