@@ -30,6 +30,37 @@ class M_apps extends CI_Model {
 		$this->db->delete($table);
 	}
 
+	public function auto_number($table, $kolom, $lebar=0, $awalan=null)
+	{
+		$this->db->select($kolom)
+				 ->from($table)
+				 ->limit(1)
+				 ->order_by($kolom, 'desc');
+		$query = $this->db->get();
+
+		$row = $query->result_array();
+		$cek = $query->num_rows();
+		
+		if ($cek > 0) 
+		{
+			$nomor = 1;
+		}
+		else
+		{
+			$nomor = intval(substr($row[0][$kolom], strlen($awalan)))+1;
+		}
+
+		if ($lebar > 0) 
+		{
+			$result = $awalan.str_pad($nomor, $lebar, "0", STR_PAD_LEFT);
+		}
+		else
+		{
+			$result = $awalan.$nomor;
+		}
+
+		return $nomor;
+	}
 }
 
 /* End of file  */
