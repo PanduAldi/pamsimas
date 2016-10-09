@@ -78,7 +78,7 @@ class Apps extends CI_Controller {
 
 		if(isset($_POST['edit']))
 		{
-			$data = array(
+			$record = array(
 							"nama_gol" => $this->input->post('nama'),
 							"tarif" => $this->input->post('tarif')
 						 );
@@ -101,6 +101,20 @@ class Apps extends CI_Controller {
 	}
 
 	// End golongan
+
+	/**
+	 * Pelanggan section 
+	 */
+
+	public function pelanggan()
+	{
+		$data = array(
+						"title" => "Data Pelanggan",
+						"pelanggan" => $this->m_apps->get_all("pelanggan")->result() 
+					 );
+	
+		$this->template->display('apps/pelanggan/index', $data);
+	}
 
 	/**
 	 * User section
@@ -190,8 +204,7 @@ class Apps extends CI_Controller {
 	{
 
 		$id = $this->input->post('id');
-
-		$this->m_apps->delete('user', 'id_user', $id);
+		$this->m_apps->delete_data('user', 'id_user', $id);
 
 	}
 
