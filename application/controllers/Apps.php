@@ -106,7 +106,15 @@ class Apps extends CI_Controller {
 	 * Pelanggan section 
 	 */
 
-
+	public function pelanggan()
+	{
+		$data = array(
+						"title" => "Data Pelanggan",
+						"pelanggan" => $this->m_apps->get_all("pelanggan")->result() 
+					 );
+	
+		$this->template->display('apps/pelanggan/index', $data);
+	}
 
 	/**
 	 * User section
