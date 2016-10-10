@@ -25,6 +25,18 @@ class Apps extends CI_Controller {
 		$this->template->display('apps/home', $data);
 	}
 
+	// Pelanggan module
+
+	public function pelanggan()
+	{
+		$data = array(
+						"title" => "Pelanggan",
+						"pel" => $this->m_apps->get_all()
+ 					);
+	}
+
+	// end pelanggan
+
 	/**
 	 * Golongan section
 	 */

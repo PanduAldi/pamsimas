@@ -17,10 +17,13 @@
 	<script src="http://localhost/assets/jQuery-2.1.4.min.js"></script>
 	<script src="http://localhost/assets/bootstrap/js/bootstrap.min.js"></script>
 	
+	<link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
+
 	<style>
 		body{
 			margin-top : 15px;
 			background : url("<?php echo base_url('img/background.jpg') ?>") center center no-repeat fixed;
+			font-family : "Alegreya", serif;
 		}
 
 		#sidebar
