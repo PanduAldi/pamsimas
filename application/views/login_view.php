@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="http://localhost/assets/cosmo.min.css">
 	<link rel="stylesheet" href="http://localhost/assets/font-awesome/css/font-awesome.min.css">
 
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
 	<script src="http://localhost/assets/jQuery-2.1.4.min.js"></script>
 	<script src="http://localhost/assets/assets/bootstrap/js/bootstrap.min.js"></script>
 	
@@ -18,6 +20,7 @@
 			margin-top : 50px;
 			background-color: grey;
 			color : white;
+			font-family : "Inconsolata", monospace;
 		}	
 
 		.login-box {
@@ -29,6 +32,11 @@
 		.border-form{
 			border-width: 2px;
 			
+		}
+
+		h3{
+
+			font-family : "Inconsolata";
 		}
 
 		@media(max-width: 768px){
