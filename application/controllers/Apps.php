@@ -111,6 +111,15 @@ class Apps extends CI_Controller {
 		$this->m_apps->delete_data('pelanggan', 'no_pelanggan', $id);
 	}
 
+	public function pendaftaran()
+	{
+		$data = array(
+						"title" => "Pendaftaran Pelanggan",
+					);
+
+		$this->template->display('apps/pelanggan/penfaftaran');
+	}
+
 	/**
 	 * User section
 	 */

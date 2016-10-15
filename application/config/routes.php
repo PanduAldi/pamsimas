@@ -74,3 +74,7 @@ $route['edit_user'] = "apps/edit_user";
 $route['hapus_user'] = "apps/hapus_user";
 $route['ganti_password'] = "apps/ganti_password";
 $route['tambah_user']  = "apps/tambah_user";
+
+//pelanggan
+$route['pelanggan'] = "apps/pelanggan";
+$route['hapus_pelanggan'] = "apps/hapus_pelanggan";
