@@ -47,7 +47,7 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="<?php echo site_url('pendaftaran') ?>"><i class="fa fa-list"></i> Pendafaran</a>
+                                        <a href="<?php echo site_url('pendaftaran') ?>"><i class="fa fa-list"></i> Pendaftaran</a>
                                     </td>
                                 </tr>
                                 <tr>

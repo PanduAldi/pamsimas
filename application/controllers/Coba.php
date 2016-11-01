@@ -14,6 +14,16 @@ class Coba extends CI_Controller {
 		echo $this->session->flashdata('helo');
 	}
 
+	public function file_read()
+	{
+		if (isset($_POST['submit'])) 
+		{
+			print_r($_FILES['img']);
+		}
+
+		$this->load->view('img_view');
+	}	
+
 }
 
 /* End of file  */

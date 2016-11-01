@@ -41,7 +41,7 @@ class M_apps extends CI_Model {
 		$row = $query->result_array();
 		$cek = $query->num_rows();
 		
-		if ($cek > 0) 
+		if ($cek == 0) 
 		{
 			$nomor = 1;
 		}
@@ -59,7 +59,7 @@ class M_apps extends CI_Model {
 			$result = $awalan.$nomor;
 		}
 
-		return $nomor;
+		return $result;
 	}
 }
 

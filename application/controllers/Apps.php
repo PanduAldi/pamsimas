@@ -7,6 +7,7 @@ class Apps extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_user');
 		$this->load->model('m_apps');
+		$this->load->library('form_validation');
 
 		// jika belum login
 		if ($this->session->userdata('islogin') == false) 
@@ -115,9 +116,87 @@ class Apps extends CI_Controller {
 	{
 		$data = array(
 						"title" => "Pendaftaran Pelanggan",
+						"no_rekening" => $this->m_apps->auto_number('registrasi', 'no_rekening', 2, date('my')),
+						"golongan" => $this->m_apps->get_all('golongan')->result()
+
 					);
 
-		$this->template->display('apps/pelanggan/penfaftaran');
+
+		$this->pendaftaran_rule();
+
+		if ($this->form_validation->run() == TRUE) 
+		{
+
+			$pelanggan = array(
+								 "no_pelanggan" => $this->input->post('no_rekening'),
+								 "nama" => $this->input->post('nama'),
+								 "alamat" => $this->input->post('alamat'),
+								 "telp" => $this->input->post('telp'),
+								 "id_golongan" => $this->input->post('id_golongan')
+							  );
+
+			$this->m_apps->insert_data('pelanggan', $pelanggan);
+
+			$registrasi  = array(
+								"no_rekening" => $this->input->post('no_rekening'),
+							    "no_pelanggan" => $this->input->post('no_rekening'),
+							    "angsuran" => 400000,
+							    "tgl_registrasi" => date('Y-m-d')
+							);		
+
+			$this->m_apps->insert_data('registrasi', $registrasi);
+
+			$stand = array(
+							 "id" => '',
+							 "no_rekening" => $this->input->post('no_rekening'),
+							 "stand_awal" => 0,
+							 "stand_akhir" => 0,
+							 "bulan" => date('n') 
+						  );
+
+			$this->m_apps->insert_data('stand', $stand);
+		
+			$this->session->set_flashdata('input_success', '<div class="alert alert-success">Input pendaftaran berhasil</div>');
+		}
+
+		$this->template->display('apps/pelanggan/pendaftaran', $data);
+	}
+
+	public function pendaftaran_rule()
+	{
+		$this->form_validation->set_rules('nama', 'Nama',  'trim|required');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('telp', 'Telp', 'trim|required');
+		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
+	}
+
+	public function cari_pelanggan()
+	{
+		$id = $this->input->post('no_pelanggan');
+
+		$q = $this->m_apps->get_id('pelanggan', 'no_pelanggan', $id)->row_array();
+
+		$data = array();
+
+		if (empty($q)) {
+			$data = array(
+							"no_pelanggan" => "",
+							"nama" => "",
+							"alamat" => "",
+							"telp" => ""
+						);
+		}
+		else
+		{
+			$data = array(
+							"no_pelanggan" => $q['no_pelanggan'],
+							"nama" => $q['nama'],
+							"alamat" => $q['alamat'],
+							"telp" => $q['telp']
+						 );
+		}
+
+		echo json_encode($data);
 	}
 
 	/**
