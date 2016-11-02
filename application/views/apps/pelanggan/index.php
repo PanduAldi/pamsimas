@@ -55,7 +55,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button onclick="edi()" class="btn btn-primary">Edit Data</button>	
+				<button onclick="edit()" class="btn btn-primary">Edit Data</button>	
 				<a class="btn btn-default" data-dismiss="modal" >Tutup</a>
 			</div>
 		</div>
@@ -94,14 +94,14 @@
 				url  : "<?php echo site_url('edit_pelanggan') ?>",
 				type : "POST",
 				data : {
-					id : $("input[name=no_pelanggan]"),
+					id : $("input[name=no_pelanggan]").val(),
 					nama : nama,
 					alamat : alamat,
 					telp : telp
 				},
 				success : function(data){
-					$(".edit_success").html(data);
-					$(".edit_success").delay(2000).hide(500);
+					alert("Edit Data Berhasil ..");
+					window.location = "<?php echo site_url('pelanggan') ?>";
 				}
 			})
 		})

@@ -77,6 +77,7 @@ $route['tambah_user']  = "apps/tambah_user";
 
 //pelanggan
 $route['pelanggan'] = "apps/pelanggan";
+$route['edit_pelanggan'] = "apps/edit_pelanggan";
 $route['hapus_pelanggan'] = "apps/hapus_pelanggan";
 $route['cari_pelanggan'] = "apps/cari_pelanggan";
 //registrasi
