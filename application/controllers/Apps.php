@@ -104,11 +104,24 @@ class Apps extends CI_Controller {
 	
 		$this->template->display('apps/pelanggan/index', $data);
 	}
+
+	public function edit_pelanggan()
+	{
+		$id = $this->input->post('id');
+
+		$params = array(
+							"nama" => $this->input->post('nama'),
+							"alamat" => $this->input->post('alamat'),
+							"telp" => $this->input->post('telp')
+					   );
+
+		$this->m_apps->update_data('pelanggan', $params, 'no_pelanggan', $id);
+	
+	}
 	
 	public function hapus_pelanggan() 
 	{
 		$id = $this->input->post('id');
-		
 		$this->m_apps->delete_data('pelanggan', 'no_pelanggan', $id);
 	}
 
